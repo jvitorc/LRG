@@ -1,20 +1,36 @@
+from conf import *
+from pdu import *
+from log import *
+
 import serial
 import pymysql
 import time
 import socket
+
 from threading import Thread, Lock
-from conf import *
-from pdu import *
+from datetime import datetime
 
 
-DEVICE_LAST_TIME = dict.fromkeys(DEVICE_INTERVAL.keys(), 0)
-BLACKLIST = set()
+# --------------------------------
+#     DEVICE CONTROL
+# --------------------------------
+DEVICE_INIT_TIME = dict.fromkeys(
+    DEVICES.keys(), datetime.now()
+)
+DEVICE_PACKETS = dict.fromkeys(DEVICES.keys(), 0)
+BLACKLIST = dict.fromkeys(DEVICES.keys(), 0)
+MONITOR_MUTEX = Lock()
+
+
+# --------------------------------
+#     FUNCTIONS
+# --------------------------------
 
 
 def serial_read(port, mutex=Lock()):
 
     while (SERIAL_READ):
-        table_name = TB_NAME
+        table_name = ""
         attributes = []
         values = []
 

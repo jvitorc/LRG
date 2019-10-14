@@ -1,16 +1,11 @@
 # --------------------------------
 #     SERVER COFIGURATION
 # --------------------------------
-SERVER_HOST = '192.168.50.166'
-SERVER_PORT = 8081
-
-# --------------------------------
-#     DEVICE CONTROL
-# --------------------------------
-DEVICE_INTERVAL = {
-    'AAA8': 1,
-    'AAAB': 2
-}
+FOG_SERVER_START = True
+FOG_SERVER_HOST = '192.168.50.166'
+FOG_SERVER_PORT = 8081
+WEB_SERVER_HOST = ''
+WEB_SERVER_PORT = ''
 
 # --------------------------------
 #     SERIAL PORT COFIGURATION
@@ -28,6 +23,12 @@ DB_USER = 'joaov'
 DB_PASSWORD = '1234'
 
 # --------------------------------
-#     DATABASE TABLE COFIGURATION
+#     DEVICE CONTROL
 # --------------------------------
-TB_NAME = 'noIOT'
+D_MIN = 0
+D_MAX = 1
+
+DEVICES = {
+    'AAA4': (0, 2),
+    'AAA8': (10, 14)
+}
